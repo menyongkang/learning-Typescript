@@ -1,5 +1,0 @@
-{
-  "javascript.implicitProjectConfig.experimentalDecorators": true,
-  "javascript.implicitProjectConfig.checkJs": true,
-  "git.ignoreLimitWarning": true
-}
