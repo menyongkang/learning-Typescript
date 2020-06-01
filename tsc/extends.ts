@@ -25,10 +25,11 @@ class Shape3D extends Shape2 {
     volume: number;
     public name: string;
    
-    constructor (name, width: number, height: number, length: number ) {
+    constructor (name:string, width: number, height: number, length: number ) {
         super( name, width, height );
         console.log(this)
         this.volume = length * this.area;
+        this.name = name;
        
     };
 
@@ -47,17 +48,30 @@ console.log( cube.superShout() );
 
 
 class GithubUser {
+    // 静态类方法
     static getPublicServices() {
+      // 调用静态方法
+      console.log(GithubUser.deArrt)
         return ['login']
     }
+    // 公用属性
     public username: string
+    // 私有属性
     private password: string
-    constructor(username, password) {
-        this.username = username
-        this.password = password
+    // 保护属性
+    protected text:string;
+    // 静态属性
+    static deArrt:string="我是静态属性";
+    constructor(username:string, password:string,text:string) {
+        this.username = username;
+        this.password = password;
+        this.text = text;
     }
+
     public login(): void {
         console.log(this.username + '要登录Github，密码是' + this.password)
     }
 }
+
+
 

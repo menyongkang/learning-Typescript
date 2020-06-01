@@ -1,3 +1,5 @@
+"use strict";
+/**箭头函数的表达式：好处是可以将this附加子上下文中**/
 var shape = {
     name: "rectangle",
     popup: function () {
@@ -10,4 +12,3 @@ var shape = {
     }
 };
 shape.popup();
-//# sourceMappingURL=lambda.js.map

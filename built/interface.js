@@ -1,3 +1,5 @@
+"use strict";
+/**接口：interface---作为一个类型批量注入*/
 function area(shape) {
     var area = shape.width * shape.height;
     return "I'm " + shape.name + " with area " + area + " cm squared";
@@ -8,4 +10,3 @@ var obj = {
     height: 100,
     color: "picking"
 };
-//# sourceMappingURL=interface.js.map

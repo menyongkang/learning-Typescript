@@ -16,7 +16,7 @@ interface SetUser {
 }
 type SetUser_1 = (name: string, age: number) => void;
 
-// 都允许扩展entends
+// 都允许扩展entends  接口继承
 // interface 和 type 都可以拓展，并且两者并不是相互独立的，也就是说 interface可以 extendstype, type 也可以 extendsinterface 。 虽然效果差不多，但是两者语法不同。
 
 // interface extends interface
@@ -56,10 +56,10 @@ type User_3 = Nmae_4 & { age: number };
 type Name_5 = string;
 // 复合类型
 interface Dog {
-  wang();
+  wang():void;
 }
 interface Cat {
-  miao();
+  miao():void;
 }
 type Pet = Dog | Cat;
 // 具体定义某个位置的类型

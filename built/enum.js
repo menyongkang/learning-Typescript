@@ -1,3 +1,5 @@
+"use strict";
+// 特殊类型
 var Project;
 (function (Project) {
     Project[Project["Math"] = 0] = "Math";
@@ -12,4 +14,5 @@ var Project2;
     Project2[Project2["Phsicla"] = 3] = "Phsicla";
 })(Project2 || (Project2 = {}));
 ;
-//# sourceMappingURL=enum.js.map
+var sub = Project.Math;
+var subject = Project2[1];
