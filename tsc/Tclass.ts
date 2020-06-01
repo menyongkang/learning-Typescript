@@ -4,22 +4,22 @@
 */
 
 class GenericNumber<T>{
-  zerovalue: T;
-  add: (x: T, y: T) => T
+  zerovalue: T|undefined;
+  add: ((x: T, y: T) => T) | undefined;
 }
 
 // 类实例化
-let myGenericNumber=new GenericNumber<number>();
+let myGenericNumber = new GenericNumber<number>();
 // 属性 赋值
-myGenericNumber.zerovalue=0;
+myGenericNumber.zerovalue = 0;
 // 添加方法
-myGenericNumber.add=function(x,y){return x*y};
+myGenericNumber.add = function (x, y): number { return x * y };
 
 
-let myGenericString=new GenericNumber<string>();
-myGenericString.zerovalue="";
-myGenericString.add=function(x,y){return x+y};
-console.log(myGenericString.add(myGenericString.zerovalue,'test'));
+let myGenericString = new GenericNumber<string>();
+myGenericString.zerovalue = "";
+myGenericString.add = function (x, y) { return x + y };
+console.log(myGenericString.add(myGenericString.zerovalue, 'test'));
 
 
 /* 泛型 约束泛型 */

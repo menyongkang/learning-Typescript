@@ -87,3 +87,37 @@ m.add(-1)
 m.add(99)
 
 
+// 把类作为参数的--泛类例子
+
+class User{
+  uesname:string|undefined;//设置默认值
+  pasword:string|undefined;
+}
+
+class MyDB{
+  // 使用类验证 传入的参数
+  add(user:User):boolean{
+    console.log(user)
+    return true
+  }
+}
+
+let u2=new User();
+u2.uesname='zhangsan';
+u2.password='abc124';
+
+let db=new MyDB();
+db.add(u2);
+
+// 是类的参数更宽泛
+class Mydb<T>{
+  add(user:T):boolean{
+    console.log(user)
+    return true
+  }
+}
+// 传入约束  
+let db2=new Mydb<User>();
+db2.add(u2);
+
+

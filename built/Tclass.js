@@ -1,5 +1,8 @@
 "use strict";
-/* 在类上使用 泛类*/
+/*
+在类上使用 泛类
+
+*/
 var GenericNumber = /** @class */ (function () {
     function GenericNumber() {
     }

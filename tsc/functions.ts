@@ -91,13 +91,13 @@ function gen_func1<T>(arg: T): T {
   return arg;
 }
 //可以把泛型变量作为类型的一部分
-function loggingIdentity<T>(arg: T[]): T[] {
+function loggingIdentityT<T>(arg: T[]): T[] {
   console.log(arg.length); // Array has a .length, so no more error
   return arg;
 }
 // 调用方式
 gen_func1<string>("Hello world");
-loggingIdentity([1, 2, 3, "e"]);
+loggingIdentityT([1, 2, 3, "e"]);
 
 // 声明方式二，泛型函数类型  <T>(arg: T) => T  ---- 泛型函数的函数类型
 let gen_func2: <T>(arg: T) => T = function(arg) {
@@ -174,7 +174,7 @@ const fn: <P, T extends keyof P>(p: P, t: T[]) => Array<P[T]> = (p, t) => {
 (3) 索引类型查询  ---  keyof P 是P上已知的公共属性名的联合类型，即 age | name 
 (4) 索引访问      ---  函数的返回值Array<P[T]>是类型为 P接口对应的T属性的类型 组成的数组 */
 
-function getProperty<T, K extends keyof T>(obj: T, key: K): T[K] {
+function getPropertyT<T, K extends keyof T>(obj: T, key: K): T[K] {
   return obj[key];
 }
 let ob44j = {
@@ -182,10 +182,10 @@ let ob44j = {
   age: 21,
   male: true
 };
-let x1 = getProperty(ob44j, "name"); // 允许，x1的类型为string
-let x2 = getProperty(ob44j, "age"); // 允许，x2的类型为number
-let x3 = getProperty(ob44j, "male"); // 允许，x3的类型为boolean
-let x4 = getProperty(ob44j, "hobby"); // 报错：Argument of type '"hobby"' is not assignable to parameter of type '"name" | "age" | "male"'.
+let x1 = getPropertyT(ob44j, "name"); // 允许，x1的类型为string
+let x2 = getPropertyT(ob44j, "age"); // 允许，x2的类型为number
+let x3 = getPropertyT(ob44j, "male"); // 允许，x3的类型为boolean
+// let x4 = getPropertyT(ob44j, "hobby"); // 报错：Argument of type '"hobby"' is not assignable to parameter of type '"name" | "age" | "male"'.
 
 interface P {
   name: string;
@@ -334,10 +334,10 @@ interface Person {
 }
 
 var people5: LinkedList<Person>; //相当于 { name: string } & { next: { name: string } & {next...}}
-var s4 = people5.name;
-var s1 = people5.next.name;
-var s2 = people5.next.next.name;
-var s6 = people5.next.next.next.name;
+// var s4 = people5.name;
+// var s1 = people5.next.name;
+// var s2 = people5.next.next.name;
+// var s6 = people5.next.next.next.name;
 
 // ----
 type TP<P> = P & { next?: TP<P> };
@@ -364,9 +364,17 @@ interface Fish {
   swim():void
   layEggs():void
 }
-function getPet():Bird|Fish{
-  return void
-}
+// function getPet():Bird|Fish{
+
+
+//   // fly():void{
+    
+//   // }
+//   // layEggs():void{}
+//   // swim():void{}
+//   // layEggs():void{}
+  
+// }
 
 // let pet = getPet() // getPet()的返回值类型是`Bird | Fish` 
 // pet.layEggs() // 允许
@@ -401,13 +409,13 @@ let strLength2: number = (<string>someValue).length; //------------ 断言成str
 
 
 
-let pet2 = getPet();
-if ((<Fish>pet2).swim) { //---------------- 断言成Fish类型，就肯定有 swim 属性
-  (<Fish>pet2).swim();
-}
-else {
-  (<Bird>pet2).fly();
-}
+// let pet2 = getPet();
+// if ((<Fish>pet2).swim) { //---------------- 断言成Fish类型，就肯定有 swim 属性
+//   (<Fish>pet2).swim();
+// }
+// else {
+//   (<Bird>pet2).fly();
+// }
 let someValue1: any = "this is a string";
 let strLength1: number = (someValue as string).length; //---------- jsx中使用as语法
 
@@ -422,12 +430,12 @@ function isFish(pet: Fish | Bird): pet is Fish {
 }
 
 // 'swim' 和 'fly' 调用都没有问题了
-if (isFish(pet2)) {
-  pet2.swim();
-}
-else {
-  pet2.fly();
-}
+// if (isFish(pet2)) {
+//   pet2.swim();
+// }
+// else {
+//   pet2.fly();
+// }
 
 
 // https://www.jianshu.com/p/13a4eb1001f1

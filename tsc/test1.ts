@@ -126,7 +126,7 @@ let xx = myFunction(4, 3);
 console.log(xx);
 
 //递归函数
-function factorial(num: number) {
+function factorial(num: number): any {
   if (num <= 0) {         // 停止执行
     return 1;
   } else {
@@ -236,31 +236,31 @@ getProperty(xy, "a");
 // 在泛型中使用 类类型
 
 // 在TypeScript使用泛型创建工厂函数时，需要引用构造函数的类类型
-function create2<T>(c: { new(): T ;}): T {
+function create2<T>(c: { new(): T; }): T {
 
   return new c();
 
 }
 // 使用原型属性推断并约束构造函数与类实例的关系
 class Keeper1 {
-  hasMask: boolean;
+  hasMask: boolean | undefined;
 }
 
 class Keeper2 {
-  nameTag: string;
+  nameTag: string | undefined;
 }
 
 class Keeper3 {
-  numLength: number;
+  numLength: number | undefined;
 }
 
 class ChildrenKeeper1 extends Keeper3 {
-  keeper: Keeper1;
+  keeper: Keeper1 | undefined;
 }
 
 
 class ChildrenKeeper2 extends Keeper3 {
-  keeper: Keeper2;
+  keeper: Keeper2 | undefined;
 }
 
 function createInstance<A extends Keeper3>(c: new () => A): A {

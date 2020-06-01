@@ -42,6 +42,7 @@ var Shape3D = /** @class */ (function (_super) {
         var _this = _super.call(this, name, width, height) || this;
         console.log(_this);
         _this.volume = length * _this.area;
+        _this.name = name;
         return _this;
     }
     ;
@@ -57,15 +58,21 @@ var cube = new Shape3D("cube", 30, 30, 30);
 console.log(cube.shoutout());
 console.log(cube.superShout());
 var GithubUser = /** @class */ (function () {
-    function GithubUser(username, password) {
+    function GithubUser(username, password, text) {
         this.username = username;
         this.password = password;
+        this.text = text;
     }
+    // 静态类方法
     GithubUser.getPublicServices = function () {
+        // 调用静态方法
+        console.log(GithubUser.deArrt);
         return ['login'];
     };
     GithubUser.prototype.login = function () {
         console.log(this.username + '要登录Github，密码是' + this.password);
     };
+    // 静态属性
+    GithubUser.deArrt = "我是静态属性";
     return GithubUser;
 }());

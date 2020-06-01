@@ -13,7 +13,7 @@ class dev implements IDeveloper {
 }
 
 class dev2 implements IDeveloper {
-  name: "Liming";
+  name: "Liming" = "Liming";
 }
 
 // 而 extends是继承父类，两者其实可以混着用：

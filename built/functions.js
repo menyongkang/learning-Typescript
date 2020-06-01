@@ -86,13 +86,13 @@ function gen_func1(arg) {
     return arg;
 }
 //可以把泛型变量作为类型的一部分
-function loggingIdentity(arg) {
+function loggingIdentityT(arg) {
     console.log(arg.length); // Array has a .length, so no more error
     return arg;
 }
 // 调用方式
 gen_func1("Hello world");
-loggingIdentity([1, 2, 3, "e"]);
+loggingIdentityT([1, 2, 3, "e"]);
 // 声明方式二，泛型函数类型  <T>(arg: T) => T  ---- 泛型函数的函数类型
 var gen_func2 = function (arg) {
     return arg;
@@ -127,7 +127,7 @@ var fn = function (p, t) {
 (2) 传入两个类型参数，fn函数的第一个参数是P类型，第二个参数是T类型的数组
 (3) 索引类型查询  ---  keyof P 是P上已知的公共属性名的联合类型，即 age | name
 (4) 索引访问      ---  函数的返回值Array<P[T]>是类型为 P接口对应的T属性的类型 组成的数组 */
-function getProperty(obj, key) {
+function getPropertyT(obj, key) {
     return obj[key];
 }
 var ob44j = {
@@ -135,10 +135,9 @@ var ob44j = {
     age: 21,
     male: true
 };
-var x1 = getProperty(ob44j, "name"); // 允许，x1的类型为string
-var x2 = getProperty(ob44j, "age"); // 允许，x2的类型为number
-var x3 = getProperty(ob44j, "male"); // 允许，x3的类型为boolean
-var x4 = getProperty(ob44j, "hobby"); // 报错：Argument of type '"hobby"' is not assignable to parameter of type '"name" | "age" | "male"'.
+var x1 = getPropertyT(ob44j, "name"); // 允许，x1的类型为string
+var x2 = getPropertyT(ob44j, "age"); // 允许，x2的类型为number
+var x3 = getPropertyT(ob44j, "male"); // 允许，x3的类型为boolean
 // 泛型函数声明
 function ff(arg) {
     return arg;
@@ -163,17 +162,17 @@ function getName(n) {
     }
 }
 var people5; //相当于 { name: string } & { next: { name: string } & {next...}}
-var s4 = people5.name;
-var s1 = people5.next.name;
-var s2 = people5.next.next.name;
-var s6 = people5.next.next.next.name;
 var a6 = function (age) {
     return age;
 };
 window.console.log(a6({ name: "wang", next: { name: "" } }));
-function getPet() {
-    return void ;
-}
+// function getPet():Bird|Fish{
+//   // fly():void{
+//   // }
+//   // layEggs():void{}
+//   // swim():void{}
+//   // layEggs():void{}
+// }
 // let pet = getPet() // getPet()的返回值类型是`Bird | Fish` 
 // pet.layEggs() // 允许
 // pet.swim() // 报错
@@ -198,13 +197,13 @@ var strLength2 = someValue.length; //------------ 断言成string类型
 // }else if (pet.fly) { //------------------- 同样报错
 //   pet.fly();
 // }
-var pet2 = getPet();
-if (pet2.swim) { //---------------- 断言成Fish类型，就肯定有 swim 属性
-    pet2.swim();
-}
-else {
-    pet2.fly();
-}
+// let pet2 = getPet();
+// if ((<Fish>pet2).swim) { //---------------- 断言成Fish类型，就肯定有 swim 属性
+//   (<Fish>pet2).swim();
+// }
+// else {
+//   (<Bird>pet2).fly();
+// }
 var someValue1 = "this is a string";
 var strLength1 = someValue.length; //---------- jsx中使用as语法
 // (2) 使用类型保护
@@ -215,11 +214,11 @@ function isFish(pet) {
     return pet.swim !== undefined;
 }
 // 'swim' 和 'fly' 调用都没有问题了
-if (isFish(pet2)) {
-    pet2.swim();
-}
-else {
-    pet2.fly();
-}
+// if (isFish(pet2)) {
+//   pet2.swim();
+// }
+// else {
+//   pet2.fly();
+// }
 // https://www.jianshu.com/p/13a4eb1001f1
 // https://www.cnblogs.com/hezhi/p/10515399.html

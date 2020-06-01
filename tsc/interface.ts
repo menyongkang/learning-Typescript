@@ -20,23 +20,23 @@ function area(shape: Shape) {
 // console.log( area( {name: "rectangle", width: 30, height: 15,color:""} ) );
 // 这样传参必须和Shape接口的属性对应
 // console.log( area( {name: "square", width: 30, height: 30, color: "blue"} ) );
-// console.log( area( {name: "square", width: 30, height: 30, color: "blue",q:'额外的参数'} ) );//这样传参是必须的
+// console.log( area( {name: "square", width: 30, height: 30, color: "blue"} ) );//这样传参是必须的
 // 改进，就是 包含的关系--有问题
-// var obj= {name: "square", width: 30, height: 30, color: "blue",q:'额外的参数'}
+// var obj= {name: "square", width: 30, height: 30, color: "blue"}
 //  console.log( area(obj) );
 
 //接口-- 可选属性
 
-interface GetInfo{
-  fistName:string;
-  secondeName?:string;//可选参数
+interface GetInfo {
+  fistName: string;
+  secondeName?: string;//可选参数
 }
 
-function getName(options:GetInfo):void{
+function getNameT(options: GetInfo): void {
   console.log(`${options.fistName}--${options.secondeName}`)
 }
 
-getName({fistName:'张三',secondeName:"zhangsan"})
+getNameT({ fistName: '张三', secondeName: "zhangsan" })
 
 interface A {
   name: string;
@@ -44,81 +44,81 @@ interface A {
   height: number;
   color: string;
 }
-let o: A = {
-  name: "shs",
-  width: 100,
-  height: 100,
-  color: "picking"
-}
+// let pp:A= {
+//   name: "shs",
+//   width: 100,
+//   height: 100,
+//   color: "picking"
+// }
 
 // 函数类型接口---函数参数的约束
-interface enterType{
-  (key:string,value:string):string;
+interface enterType {
+  (key: string, value: string): string;
 }
 
-let md5:enterType=function( key:string,value:string):string{
+let md5: enterType = function (key: string, value: string): string {
   return `${key}--${value}`
 }
-md5('z账单','历史')
+md5('z账单', '历史')
 
 // 可索引接口  
 
-interface UseArr{
-  [index:number]:string
+interface UseArr {
+  [index: number]: string
 }
-let userArr:UseArr=['工作好哪找'];
+let userArr: UseArr = ['工作好哪找'];
 
-let useArr2:Array<string>=['真的是苛刻'];
+let useArr2: Array<string> = ['真的是苛刻'];
 
 
-interface UserObj{
-  [key:string]:string
+interface UserObj {
+  [key: string]: string
 }
-let ueserObj:UserObj={
-  'key':'valeu'
+let ueserObj: UserObj = {
+  'key': 'valeu'
 }
 
 // 类--类型接口
 
-interface Person99{
-   name:string;
-   eat(str:string):void;
- }
+interface Person99 {
+  name: string;
+  eat(str: string): void;
+}
 
- class Li implements Person99{
-   name:string
-   constructor(name:string){
-     this.name=name;
-   }
+class Li implements Person99 {
+  name: string
+  constructor(name: string) {
+    this.name = name;
+  }
 
-   eat(str:string){
-     console.log('吃吃',`${str}`)
-   }
- }
+  eat(str: string) {
+    console.log('吃吃', `${str}`)
+  }
+}
 
 //  接口扩展-- 继承
 interface An {
-  eat(str:string): void;
+  eat(str: string): void;
 }
 interface Anim extends An {
   work(): void;
 }
-class Web implements Anim{
-  public name:string
+class Web implements Anim {
+  public name: string
 
-  constructor(name:string){
-    this.name=name;
+  constructor(name: string) {
+    this.name = name;
   }
-  eat(str:string):void{
+  eat(str: string): void {
     console.log(`${str}`);
   }
-  work():void{
+  work(): void {
     console.log(this.name)
   }
 }
 
 
-let xiao= new Web('夏磊');
+let xiao = new Web('夏磊');
 console.log(xiao.eat)
 console.log(xiao.work)
 console.log(xiao.name)
@@ -126,26 +126,26 @@ console.log(xiao.name)
 
 // 类继承
 class Program {
-  public name:string;
-  constructor(name:string){
-    this.name=name;
+  public name: string;
+  constructor(name: string) {
+    this.name = name;
   }
 
-  codding(){
-    
+  codding() {
+
   }
 }
 
-class Jav extends Program implements Anim{
+class Jav extends Program implements Anim {
   public name: string;
-  constructor(name:string){
+  constructor(name: string) {
     super(name);
-    this.name=name;
+    this.name = name;
   }
-  eat(str:string):void{
+  eat(str: string): void {
     console.log(this.name)
   }
-  work():void{
+  work(): void {
     console.log('工作')
   }
 }

@@ -9,19 +9,19 @@
  *
  * **/
 class Shape {
-    // 定义属性 
-    area: number;
-    color: string;
-    // 构造函数
-    constructor(public name: string, public width: number, public height: number) {
-        this.area = width * height;
-        this.color = "pink";
-    };
+  // 定义属性 
+  area: number;
+  color: string;
+  // 构造函数
+  constructor(public name: string, public width: number, public height: number) {
+    this.area = width * height;
+    this.color = "pink";
+  };
 
-    // 原型上的方法
-    shoutout():string {
-        return "I'm " + this.color + " " + this.name + " with an area of " + this.area + " cm squared.";
-    }
+  // 原型上的方法
+  shoutout(): string {
+    return "I'm " + this.color + " " + this.name + " with an area of " + this.area + " cm squared.";
+  }
 }
 
 let square = new Shape("square", 30, 30);
@@ -36,22 +36,22 @@ let square = new Shape("square", 30, 30);
 
 
 class Student {
-    //定义属性
-    firstName: string;
-    // 构造函数  
-    constructot(firstName: string, middleInitial: number, lastName: string) {
-        this.firstName = firstName + "  " +   + "  " + lastName;
-    }
+  //定义属性
+  firstName: string;
+  // 构造函数  
+  constructor(firstName: string, middleInitial: number, lastName: string) {
+    this.firstName = firstName + "  " + + "  " + lastName;
+  }
 }
 
 interface Person {
-    firstName: string;
-    lastName: string;
+  firstName: string;
+  lastName: string;
 }
 function greeter2(person: Person) {
-    return `Hello ${person.firstName} ,  ${person.lastName}`
+  return `Hello ${person.firstName} ,  ${person.lastName}`
 }
 
-let user2 = new Student();
+let user2 = new Student('cc',44,'ddd');
 console.log(user2);
 // document.body.innerHTML = greeter2(user2);

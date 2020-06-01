@@ -9,6 +9,7 @@ var dev = /** @class */ (function () {
 }());
 var dev2 = /** @class */ (function () {
     function dev2() {
+        this.name = "Liming";
     }
     return dev2;
 }());

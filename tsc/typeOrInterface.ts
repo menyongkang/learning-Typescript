@@ -114,22 +114,17 @@ interface User{
   password:string
 }
 
+interface AT { a: number }  
+interface BT { b: number }
 
+var ab: AT & BT = { a: 1, b: 1 };  
+var a: AT = ab;  // A & B assignable to A  
+var b: BT = ab;  // A & B assignable to B
 
+interface X { p: AT }  
+interface Y { p: BT }
 
-
-
-interface A { a: number }  
-interface B { b: number }
-
-var ab: A & B = { a: 1, b: 1 };  
-var a: A = ab;  // A & B assignable to A  
-var b: B = ab;  // A & B assignable to B
-
-interface X { p: A }  
-interface Y { p: B }
-
-var xy: X & Y = { p: ab };  // X & Y has property p of type A & B
+let GH: X & Y = { p: ab };  // X & Y has property p of type A & B
 
 type F1 = (a: string, b: string) => void;  
 type F2 = (a: number, b: number) => void;

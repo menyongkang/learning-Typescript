@@ -1,6 +1,6 @@
 /** 测试例子*/
 
-function greeter55(person) {
+function greeter55(person: string) {
  return 'Hello'+person;
 }
 
