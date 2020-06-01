@@ -1,4 +1,7 @@
-/* 在类上使用 泛类*/
+/* 
+在类上使用 泛类
+
+*/
 
 class GenericNumber<T>{
   zerovalue: T;

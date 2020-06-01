@@ -116,3 +116,36 @@ class Web implements Anim{
     console.log(this.name)
   }
 }
+
+
+let xiao= new Web('夏磊');
+console.log(xiao.eat)
+console.log(xiao.work)
+console.log(xiao.name)
+
+
+// 类继承
+class Program {
+  public name:string;
+  constructor(name:string){
+    this.name=name;
+  }
+
+  codding(){
+    
+  }
+}
+
+class Jav extends Program implements Anim{
+  public name: string;
+  constructor(name:string){
+    super(name);
+    this.name=name;
+  }
+  eat(str:string):void{
+    console.log(this.name)
+  }
+  work():void{
+    console.log('工作')
+  }
+}
